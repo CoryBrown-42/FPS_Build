@@ -28,7 +28,7 @@ public class pickup : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                PlayerHealth healthScript = FindObjectOfType<PlayerHealth>();
+                PlayerStats healthScript = FindObjectOfType<PlayerStats>();
                 healthScript.addHealthMedkit();
                 Destroy(col.gameObject);
 
@@ -45,7 +45,7 @@ public class pickup : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                PlayerHealth healthScript = FindObjectOfType<PlayerHealth>();
+                PlayerStats healthScript = FindObjectOfType<PlayerStats>();
                 healthScript.addHealthBandage();
                 Destroy(col.gameObject);
                 Prompt.SetActive(false);

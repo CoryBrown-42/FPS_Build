@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerStats : MonoBehaviour {
 
     [SerializeField]
-    public float healthVal;
+    private float healthVal;
+
+    [SerializeField]
+    private float xpVal;
+
+    private float lvlVal;
+
     [SerializeField]
     private float staminaVal;
+
+    [SerializeField]
+    private Text lvlText;
+
+
     //UI Sliders represent health
     [SerializeField]
     private Slider healthBar;
     [SerializeField]
     private Slider staminaBar;
+    [SerializeField]
+    private Slider xpBar;
+
     [SerializeField]
     private float medkitVal = 20.0f;
     [SerializeField]
@@ -21,6 +35,7 @@ public class PlayerHealth : MonoBehaviour {
 
     private float maxHealth = 100.0f;
     private float maxStamina = 100.0f;
+    private float maxXP = 100;
 
     private float minHealth = 0f;
     private float minStamina = 0f;
@@ -37,6 +52,8 @@ public class PlayerHealth : MonoBehaviour {
         staminaVal = 100;
         maxHealth = 100;
         maxStamina = 100;
+        lvlVal = 1;
+        lvlText.text = "lvl: " + lvlVal + "";
 	}
 
     private void FixedUpdate()
