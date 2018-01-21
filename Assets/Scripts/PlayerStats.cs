@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour {
 
     [SerializeField]
     private Text lvlText;
+    [SerializeField]
+    private Text xpText;
 
 
     //UI Sliders represent health
@@ -35,6 +37,7 @@ public class PlayerStats : MonoBehaviour {
 
     private float maxHealth = 100.0f;
     private float maxStamina = 100.0f;
+
     private float maxXP = 100;
 
     private float minHealth = 0f;
@@ -50,17 +53,29 @@ public class PlayerStats : MonoBehaviour {
     {
         healthVal = 100;
         staminaVal = 100;
+
         maxHealth = 100;
         maxStamina = 100;
+
         lvlVal = 1;
-        lvlText.text = "lvl: " + lvlVal + "";
+        
 	}
 
     private void FixedUpdate()
     {
-        healthBar.value = healthVal;
+        healthBar.value  = healthVal;
         staminaBar.value = staminaVal;
+        xpBar.value      = xpVal;
+        lvlText.text = "lvl " + lvlVal + "";
+        xpText.text = "" + Mathf.Round(xpVal) + " / 100 xp";
 
+
+        if (xpVal >= 100)
+        {
+            lvlVal++;
+            xpVal = 0;
+        }
+        
 
         if(healthVal >= maxHealth)
         {
@@ -94,6 +109,12 @@ public class PlayerStats : MonoBehaviour {
     public void addHealthMedkit()
     {
         healthVal += medkitVal;
+
+    }
+
+    public void addXP()
+    {
+        xpVal += 0.3f;
     }
 
 

@@ -46,7 +46,7 @@ void Update()
         {
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
 		    //var forward = transform.TransformDirection(Vector3.forward);
-            agent.SetDestination(IdleHome.position);
+            //agent.SetDestination(IdleHome.position);
         }
 
         if (Vector3.Distance (player.position, transform.position) < distanceFromTarget)

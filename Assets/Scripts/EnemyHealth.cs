@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour {
     {
         healthVal = 100;
         maxHealth = 100;
-	}
+}
 
     private void FixedUpdate()
     {
@@ -31,6 +31,9 @@ public class EnemyHealth : MonoBehaviour {
         if (healthVal <= minHealth)
         {
             Destroy(gameObject);
+
+            PlayerStats playerScript = FindObjectOfType<PlayerStats>();
+            playerScript.addXP();
         }
     }
 
@@ -44,6 +47,8 @@ public class EnemyHealth : MonoBehaviour {
         if (col.gameObject.tag == "Sword")
         {
             minusHealth();
+            PlayerStats playerScript = FindObjectOfType<PlayerStats>();
+            playerScript.addXP();
         }
 
     }

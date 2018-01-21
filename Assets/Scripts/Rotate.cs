@@ -5,15 +5,16 @@ using UnityEngine;
 public class Rotate : MonoBehaviour {
 
     public Transform target;
-
+    public int speed;
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         transform.LookAt(target);
-        transform.Translate(Vector3.right * Time.fixedDeltaTime);
+        transform.Rotate(Vector3.right * speed * Time.fixedDeltaTime);
     }
 }
