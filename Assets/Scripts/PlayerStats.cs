@@ -109,6 +109,7 @@ public class PlayerStats : MonoBehaviour {
     public void addHealthMedkit()
     {
         healthVal += medkitVal;
+        xpVal += 5;
 
     }
 
