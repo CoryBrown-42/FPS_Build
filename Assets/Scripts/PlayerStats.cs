@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour {
 
     [SerializeField]
-    private float healthVal;
+    private float hpVal;
 
     [SerializeField]
     private float xpVal;
@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour {
     [SerializeField]
     private float staminaVal;
 
+    [SerializeField]
+    private Text hpText;
     [SerializeField]
     private Text lvlText;
     [SerializeField]
@@ -35,7 +37,7 @@ public class PlayerStats : MonoBehaviour {
     [SerializeField]
     private float bandageVal = 5.0f;
 
-    private float maxHealth = 100.0f;
+    private float maxHP = 100.0f;
     private float maxStamina = 100.0f;
 
     private float maxXP = 100;
@@ -51,10 +53,10 @@ public class PlayerStats : MonoBehaviour {
 
     void Start ()
     {
-        healthVal = 100;
+        hpVal = 100;
         staminaVal = 100;
 
-        maxHealth = 100;
+        maxHP = 100;
         maxStamina = 100;
 
         lvlVal = 1;
@@ -63,11 +65,12 @@ public class PlayerStats : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        healthBar.value  = healthVal;
+        healthBar.value  = hpVal;
         staminaBar.value = staminaVal;
         xpBar.value      = xpVal;
 		xpBar.maxValue = maxXP;
         lvlText.text = "lvl " + lvlVal + "";
+        hpText.text = "" + Mathf.Round(hpVal) + "";
         xpText.text = "" + Mathf.Round(xpVal) + " / " + maxXP +" xp";
 
 
@@ -79,18 +82,18 @@ public class PlayerStats : MonoBehaviour {
         }
         
 
-        if(healthVal >= maxHealth)
+        if(hpVal >= maxHP)
         {
-            healthVal = 100;
+            hpVal = 100;
         }
         if(staminaVal >= maxStamina)
         {
             staminaVal = 100;
         }
 
-        if (healthVal <= minHealth)
+        if (hpVal <= minHealth)
         {
-            healthVal = 0;
+            hpVal = 0;
         }
         if (staminaVal <= minStamina)
         {
@@ -110,7 +113,7 @@ public class PlayerStats : MonoBehaviour {
 
     public void addHealthMedkit()
     {
-        healthVal += medkitVal;
+        hpVal += medkitVal;
         xpVal += 5;
 
     }
@@ -123,13 +126,13 @@ public class PlayerStats : MonoBehaviour {
 
     public void addHealthBandage()
     { 
-        healthVal += bandageVal;
+        hpVal += bandageVal;
     }
 
 
     public void minusHealth()
     {
-        healthVal -= damage;
+        hpVal -= damage;
     }
 
     private void OnTriggerStay(Collider col)

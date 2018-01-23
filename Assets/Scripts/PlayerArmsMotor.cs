@@ -39,4 +39,20 @@ public class PlayerArmsMotor : MonoBehaviour {
             anim.SetBool("isStabbingSword", false);
         }
     }
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Untagged")
+        {
+            anim.SetBool("HitDeWall", true);
+        }
+
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Untagged")
+        {
+            anim.SetBool("HitDeWall", false);
+        }
+
+    }
 }
