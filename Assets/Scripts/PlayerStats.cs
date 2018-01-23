@@ -66,13 +66,15 @@ public class PlayerStats : MonoBehaviour {
         healthBar.value  = healthVal;
         staminaBar.value = staminaVal;
         xpBar.value      = xpVal;
+		xpBar.maxValue = maxXP;
         lvlText.text = "lvl " + lvlVal + "";
-        xpText.text = "" + Mathf.Round(xpVal) + " / 100 xp";
+        xpText.text = "" + Mathf.Round(xpVal) + " / " + maxXP +" xp";
 
 
-        if (xpVal >= 100)
+        if (xpVal >= maxXP)
         {
             lvlVal++;
+			maxXP = maxXP + maxXP;
             xpVal = 0;
         }
         

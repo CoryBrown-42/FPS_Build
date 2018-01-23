@@ -5,7 +5,14 @@ using UnityEngine;
 public class Rotate : MonoBehaviour {
 
     public Transform target;
+
     public int speed;
+
+	public bool spinLeft 	= false;
+	public bool spinRight 	= false;
+	public bool spinUp 		= false;
+	public bool spinDown 	= false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +22,14 @@ public class Rotate : MonoBehaviour {
 	void Update ()
     {
         transform.LookAt(target);
-        transform.Rotate(Vector3.right * speed * Time.fixedDeltaTime);
+		if(spinUp == true)
+        	transform.Rotate(Vector3.up * speed * Time.fixedDeltaTime);
+		if(spinDown == true)
+			transform.Rotate(Vector3.down * speed * Time.fixedDeltaTime);
+		if(spinRight == true)
+			transform.Rotate(Vector3.right * speed * Time.fixedDeltaTime);
+		if(spinLeft == true)
+			transform.Rotate(Vector3.left * speed * Time.fixedDeltaTime);
+
     }
 }
