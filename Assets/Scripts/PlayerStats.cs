@@ -7,7 +7,6 @@ public class PlayerStats : MonoBehaviour {
 
     [SerializeField]
     private float hpVal;
-
     [SerializeField]
     private float xpVal;
 
@@ -39,7 +38,6 @@ public class PlayerStats : MonoBehaviour {
 
     private float maxHP = 100.0f;
     private float maxStamina = 100.0f;
-
     private float maxXP = 100;
 
     private float minHealth = 0f;
@@ -53,44 +51,72 @@ public class PlayerStats : MonoBehaviour {
 
     void Start ()
     {
+        //Start with full health and stamina
         hpVal = 100;
         staminaVal = 100;
 
-        maxHP = 100;
-        maxStamina = 100;
-
+        //Starting Level
         lvlVal = 1;
-        
 	}
 
     private void FixedUpdate()
     {
-        healthBar.value  = hpVal;
-        staminaBar.value = staminaVal;
-        xpBar.value      = xpVal;
-		xpBar.maxValue = maxXP;
-        lvlText.text = "lvl " + lvlVal + "";
-        hpText.text = "" + Mathf.Round(hpVal) + "";
-        xpText.text = "" + Mathf.Round(xpVal) + " / " + maxXP +" xp";
-
+        RefreshUI();
+        StatCap();
 
         if (xpVal >= maxXP)
         {
-            lvlVal++;
-			maxXP = maxXP + maxXP;
-            xpVal = 0;
+            LevelUp();
         }
-        
+       
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+        {
+            StaminaDrain();
+        }
+        else
+        {
+            StaminaGain();
+        }
+    }
 
-        if(hpVal >= maxHP)
+    void RefreshUI()
+    {
+        healthBar.value = hpVal;
+        staminaBar.value = staminaVal;
+        xpBar.value = xpVal;
+        xpBar.maxValue = maxXP;
+        lvlText.text = "lvl " + lvlVal + "";
+        hpText.text = "" + Mathf.Round(hpVal) + "";
+        xpText.text = "" + Mathf.Round(xpVal) + " / " + maxXP + " xp";
+    }
+    
+
+    void StaminaDrain()
+    {
+        staminaVal -= fatigue;
+    }
+
+    void StaminaGain()
+    {
+        staminaVal += stamRegen;
+    }
+
+    void LevelUp()
+    {
+        lvlVal++;
+        maxXP = maxXP + maxXP;
+        xpVal = 0;
+    }
+    void StatCap()
+    {
+        if (hpVal >= maxHP)
         {
             hpVal = 100;
         }
-        if(staminaVal >= maxStamina)
+        if (staminaVal >= maxStamina)
         {
             staminaVal = 100;
         }
-
         if (hpVal <= minHealth)
         {
             hpVal = 0;
@@ -99,17 +125,7 @@ public class PlayerStats : MonoBehaviour {
         {
             staminaVal = 0;
         }
-
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
-        {
-            staminaVal -= fatigue;
-        }
-        else
-        {
-            staminaVal += stamRegen;
-        }
     }
-
 
     public void addHealthMedkit()
     {
@@ -143,15 +159,14 @@ public class PlayerStats : MonoBehaviour {
             minusHealth();
         }
     }
-        private void OnTriggerExit(Collider col)
-        {
-            pickup DangerPrompt = FindObjectOfType<pickup>();
-            DangerPrompt.pickUp_text.color = Color.black;
-            DangerPrompt.pickupPrompt.SetActive(false);
 
-        }
-        
+   private void OnTriggerExit(Collider col)
+   {
+       pickup DangerPrompt = FindObjectOfType<pickup>();
+       DangerPrompt.pickUp_text.color = Color.black;
+       DangerPrompt.pickupPrompt.SetActive(false);
 
+   }
 
-    }
+}
 
