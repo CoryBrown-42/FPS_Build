@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class Flashlight : MonoBehaviour {
 
-
-    Light flashLight;
-	// Use this for initialization
+  Light flashLight;
+  
 	void Start ()
-    {
-        flashLight = GetComponent<Light>();
+  {
+    flashLight = GetComponent<Light>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            flashLight.enabled = !flashLight.enabled;
-        }
-		
+
+	void Update ()
+  {
+    if (Input.GetKeyDown(KeyCode.F))
+    {
+      flashLight.enabled = !flashLight.enabled;
+    }
 	}
 }

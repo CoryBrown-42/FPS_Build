@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class  Bullet : MonoBehaviour
+public class  Projectile : MonoBehaviour
 {
 	public float maxSpeed = 25f;
-	public Rigidbody bullet;
+	public Rigidbody projectile;
 
 	void Update()
 	{
-			bullet.velocity = transform.forward * maxSpeed;
-			Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+			projectile.velocity = transform.forward * maxSpeed;
+			Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>());
 	}
     void OnCollisionExit(Collision col)
     {
