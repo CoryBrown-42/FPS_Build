@@ -3762,7 +3762,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4546313401540758, guid: ebeef44284fcc244787d324f20c00ea2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -9.61
       objectReference: {fileID: 0}
     - target: {fileID: 4546313401540758, guid: ebeef44284fcc244787d324f20c00ea2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3800,6 +3800,41 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 8.59178
+      objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Center.y
+      value: -0.37588504
+      objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 12.531669
+      objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Center.x
+      value: 0.017782249
+      objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 11.393214
+      objectReference: {fileID: 0}
+    - target: {fileID: 65362899932415438, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Center.z
+      value: -0.25849542
+      objectReference: {fileID: 0}
+    - target: {fileID: 23577812384982506, guid: ebeef44284fcc244787d324f20c00ea2,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4285dd253a8185e42a80a9a4d57606b1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebeef44284fcc244787d324f20c00ea2, type: 2}
   m_IsPrefabParent: 0

@@ -22,9 +22,20 @@ public class PlayerArmsMotor : MonoBehaviour {
 		if(sword.activeSelf == true)
         {
             anim.SetBool("isIdleUnarmed", false);
+
+        }
+        if (sword.activeSelf == false && Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("isPunching", true);
+        }
+        else
+        {
+            anim.SetBool("isPunching", false);
         }
 
-        if(sword.activeSelf == false)
+        
+
+        if (sword.activeSelf == false)
         {
             anim.SetBool("isIdleUnarmed", true);
         }

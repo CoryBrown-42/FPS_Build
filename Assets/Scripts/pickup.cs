@@ -10,12 +10,27 @@ public class pickup : MonoBehaviour
     [SerializeField]
     private GameObject Sword;
 
+    public bool SwordEquiped = false;
+
     // Use this for initialization
     void Start()
     {
         Prompt.SetActive(false);
         pickupPrompt.SetActive(false);
        
+    }
+
+    private void Update()
+    {
+        if(Sword.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            Sword.SetActive(false);
+        }
+
+        if (SwordEquiped == true && Sword.activeSelf == false && Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            Sword.SetActive(true);
+        }
     }
 
     private void OnTriggerStay(Collider col)
@@ -64,6 +79,7 @@ public class pickup : MonoBehaviour
                 Destroy(col.gameObject);
                 Sword.SetActive(true);
                 Prompt.SetActive(false);
+                SwordEquiped = true;
                 pickupPrompt.SetActive(false);
             }
         }
