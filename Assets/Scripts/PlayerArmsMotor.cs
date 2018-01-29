@@ -6,7 +6,6 @@ public class PlayerArmsMotor : MonoBehaviour {
 
 
     public Animator anim;
-
     public GameObject sword;
 
     bool Activate;
@@ -39,6 +38,7 @@ public class PlayerArmsMotor : MonoBehaviour {
             anim.SetBool("isStabbingSword", false);
         }
     }
+
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag == "Untagged")
